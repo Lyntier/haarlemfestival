@@ -1,0 +1,28 @@
+﻿@using hf.Models
+@model IEnumerable<hf.Models.PageInfo>
+<h2>Edit the website's pages</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" class="col-md-1">#</th>
+        <th scope="col" class="col-md-5">Description 1</th>
+        <th scope="col" class="col-md-5">Description 2</th>
+        <th scope="col" class="col-md-1">Accept</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (PageInfo pageInfo in Model)
+        {
+            <tr>
+                @using (Html.BeginForm("SendDescriptionChange", "Pages", new { area = "Admin" }, FormMethod.Post))
+                {
+                    <td><input type="text" style="display:none" value="@pageInfo.Id" name="id" /><label>@pageInfo.Id</label></td>
+                    <td><textarea style="width: 100%; min-height: 30px" type="text" name="description1">@pageInfo.Description1</textarea></td>
+                    <td><textarea style="width: 100%; min-height: 30px" type="text" name="description2">@pageInfo.Description2</textarea></td>
+                    <td><button class="btn btn-primary" type="submit">OK</button></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

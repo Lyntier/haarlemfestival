@@ -1,0 +1,120 @@
+﻿@model hf.ViewModels.HistoricViewModel
+
+<link rel="stylesheet" href="@Url.Content("~/Content/Historic/Historic.css")" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<div class="historic-container">
+    <article class="left-historic">
+        <div id="historic-info">
+            <h1>Historic Haarlem</h1>
+            <p>
+                @*@Model.PageInfo.Description1*@
+                Historic walk is an event of Haarlem Festival where you can walk a tour.
+                You will visit 9 famous spots of Haarlem during the tour.
+                These spots are shown on the right, click on a photo for more information about the place.
+                After you have bought a ticket you wil be able to listen back to the guide in the information box.
+                <br /><br />
+                The tour wil takes about 2,5 hours with a 15 minute break at the Jopenkerk.
+                <br /><br />
+                The tour is available in English, Dutch and Chinese.
+                <br /><br />
+                The tour starts near the ‘Church of St. Bavo’, ‘Grote Markt’ in the centre of Haarlem.
+                A giant flag marked ‘Haarlem Historic’ will mark the exact starting location.
+            </p>
+            <h4>Prices:</h4>
+            <p>
+                Regular &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp € 17,50 <br />
+                Family ticket &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp € 60,-    <br />
+                (4 participants)
+            </p>
+            <a id="btn-historic-reserve" class="btn-historic">Reserve Ticket</a>
+        </div>
+
+        <div id="historic-reserve">
+            <h1>Historic Haarlem</h1>
+            <h2>Reserve a ticket</h2>
+            <form class="historic-options">
+                <div class="historic-option-left">
+                    <h4>Day:</h4>
+                    <input type="radio" name="day" value="thursday">Thursday<br />
+                    <input type="radio" name="day" value="friday">Friday<br />
+                    <input type="radio" name="day" value="saturday">Saturday<br />
+                    <input type="radio" name="day" value="sunday">Sunday<br />
+                </div>
+                <div class="historic-option-right">
+                    <h4>Time:</h4>
+                    <input type="radio" name="time" value="10:00">10:00<br />
+                    <input type="radio" name="time" value="13:00">13:00<br />
+                    <input type="radio" name="time" value="16:00">16:00<br />
+                </div>
+                <div class="historic-option-left">
+                    <h4>Language:</h4>
+                    <input type="radio" name="language" value="english">English<br />
+                    <input type="radio" name="language" value="dutch">Dutch<br />
+                    <input type="radio" name="language" value="chinese">Chinese<br />
+                </div>
+                <div class="historic-option-right">
+                    <h4>Amount*:</h4>
+                    <select onchange="amountSelect(this)" name="amount">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <p class="historic-small">*Every 4 is a family ticket</p>
+                </div>
+                <div>
+                    <h4>Price:</h4>
+                    <table class="historic-price">
+                        <tr>
+                            <td id="historic-ticket-amount">1 Ticket</td>
+                            <td id="historic-ticket-price">€ 17,50</td>
+                        </tr>
+                        <tr>
+                            <td id="historic-family-amount">0 Family tickets</td>
+                            <td id="historic-family-price">€ 0,-</td>
+                        </tr>
+                        <tr>
+                            <th class="historic-total">Total</th>
+                            <td id="historic-total-price" class="historic-total">€ 17,50</td>
+                        </tr>
+                    </table>
+                </div>
+                <a id="btn-historic-program" class="btn-historic">Add to My Program</a>
+                <a id="btn-historic-back" class="btn-historic">Back to info</a>
+            </form>
+        </div>
+    </article>
+
+    <div class="right-historic">
+
+        @foreach (var item in Model.HistoricLocation)
+        {
+            <section id="@item.Id" class="location-button">
+                <img src="@Url.Content(item.PictureUrl)" alt="@item.Name">
+                <h3>@item.Id. @item.Name</h3>
+            </section>
+        }
+
+        @foreach (var item in Model.HistoricLocation)
+        {
+            <section id="hl-@item.Id" class="historic-location">
+                <h1>@item.Name</h1>
+                <img src="@Url.Content("~/Content/Historic/close.png")" class='historic-location-close' alt="Close">
+                <img src="@Url.Content(item.PictureUrl)" class="historic-location-img" alt="@item.Name">
+                <p class="historic-location-description">@item.Description</p>
+                <a href="@item.UrlWebsite" target="_blank">For more info click here to visit the official website.</a>
+            </section>
+        }
+    </div>
+</div>
+
+<script src="@Url.Content("~/Scripts/Historic/Historic.js")" type="text/javascript"></script>

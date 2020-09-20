@@ -1,0 +1,89 @@
+:root {
+    --fg-header: #ffffff;
+    --bg-header: #00bfff;
+    --fg-sidebar: #dddddd;
+    --bg-sidebar: #333333;
+    --fg-main: #333333;
+    --bg-main: :#eeeeee;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.page-header {
+    padding: 0;
+    margin: 0;
+    color: var(--fg-header);
+    background-color: var(--bg-header);
+    height: 100px;
+}
+
+    .page-header h1 {
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        line-height: 100px;
+    }
+
+#page-wrapper {
+    position: absolute;
+    top: 101px;
+    bottom: 0;
+    width: 100%;
+}
+
+/*#page-wrapper, #page-wrapper > .row, #page-wrapper .col-xs-3, #page-wrapper .col-xs-9, #page-wrapper nav#nav-main {
+    height: 100%;
+}*/
+
+.container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+nav#nav-main {
+    background-color: var(--bg-sidebar);
+}
+
+    nav#nav-main li {
+        margin: 15px 0;
+    }
+
+    nav#nav-main a {
+        color: var(--fg-sidebar);
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+nav li#nav-logout {
+    margin-top: 100px;
+}
+
+    nav li#nav-logout a:hover {
+        color: red;
+    }
+
+/* Timetable styles */
+
+.timetable .time-entry.jazz-event {
+    border-color: #330066;
+    background-color: #663399;
+}
+
+.timetable .time-entry.dance-event {
+    border-color: #0057cc;
+    background-color: #1e90ff;
+}
+
+.timetable .time-entry.Historic-event {
+    border-color: #556b2f;
+    background-color: olivedrab;
+}
+
+.timetable .time-entry.Food-event {
+    border-color: #855300;
+    background-color: #b8860b;
+}

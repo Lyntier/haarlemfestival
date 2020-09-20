@@ -1,0 +1,18 @@
+﻿
+<section class="cart-container">
+    <h2>Choose Payment Methode</h2>
+
+    <p>Please provide your email to receive youre e-tickets. Afterwards please choose a Payment methode.</p>
+    @using (Html.BeginForm())
+    {
+        <label>Email</label>
+        <input type="email" name="userMail" />
+        <hr />
+
+        <input type="submit" value="Creditcard" />
+        <br />
+        <input type="submit" value="PayPal" />
+
+    }
+
+</section>

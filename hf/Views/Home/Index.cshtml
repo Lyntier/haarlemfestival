@@ -1,0 +1,84 @@
+﻿@model hf.Models.PageInfo
+
+@{
+    ViewBag.Title = "Haarlem Festival";
+}
+<div class=" container">
+    <article class="links">
+        <section class="l-title">
+            <h1>Haarlem Festival</h1>
+        </section>
+        <section class="l-info">
+            <p>@Model.Description1</p>
+            <h2>@Model.Description2</h2>
+        </section>
+        <section class="l-social">
+            <a href="#">
+                <img src="@Url.Content("~/Content/facebook.png")" alt="facebook link" width="30%">
+            </a>
+            <a href="#">
+                <img src="@Url.Content("~/Content/instagram.png")" alt="instagram link" width="30%">
+            </a>
+        </section>
+
+    </article>
+    <section class="midden">
+        <aside class="food" id="mid-food">
+            <aside class="mid-img">
+                <img src="@Url.Content("~/Content/food.png")" width="100%" alt="food">
+            </aside>
+            <aside class="mid-title">
+                <h2>Haarlem Food</h2>
+            </aside>
+            <aside class="mid-tekst">
+                <p>
+                    Haarlem has always had a massive variety of different cultures populating the city. As a result, the city does not have a very specific type of culinary experience of its own, but instead offers many different styles of food in its plethora of different restaurants.
+                </p>
+                <button class="btn-default" onclick="location.href='@Url.Action("Index", "Food")'; return false;">Event info</button>
+            </aside>
+        </aside>
+        <aside class="dance" id="mid-dance">
+            <aside class="mid-img">
+                <img src="@Url.Content("~/Content/dance.png")" width="100%" alt="food">
+            </aside>
+            <aside class="mid-title">
+                <h2>Haarlem Dance</h2>
+            </aside>
+            <aside class="mid-tekst">
+                <p> As part of the Haarlem Festival, Haarlem Dance is a event that takes place in different venue's of Haarlem. A couple of the venue's are the Lichtfabriek, the Club Stalker, the Jopenkerk, XO the Club and Club Ruis.  Some of the best world-renowned Dutch DJ's will be performing in those venues to fill the city with dance, trance, house and techno.</p>
+                <button class="btn-default" onclick="location.href='@Url.Action("Index", "Dance")'; return false;">Event info</button>
+            </aside>
+        </aside>
+        <aside class="jazz" id="mid-jazz">
+            <aside class="mid-img">
+                <img src="@Url.Content("~/Content/jazz.png")" width="100%" alt="food">
+            </aside>
+            <aside class="mid-title">
+                <h2>Haarlem Jazz</h2>
+            </aside>
+            <aside class="mid-tekst">
+                <p> Haarlem Jazz is an important music event for the City of Haarlem. During the festival, we want to recreate part of this festival by inviting some of the bands previously performed there to play at the Patronaat On Sunday, some of the bands will take to the big stage at the Grote Markt to perform for all visitors for free.</p>
+                <button class="btn-default" onclick="location.href='@Url.Action("Index", "Jazz")'; return false;">Event info</button>
+            </aside>
+        </aside>
+        <aside class="historic" id="mid-historic">
+            <aside class="mid-img">
+                <img src="@Url.Content("~/Content/historic.png")" width="100%" alt="food">
+            </aside>
+            <aside class="mid-title">
+                <h2>Haarlem Historic</h2>
+            </aside>
+            <aside class="mid-tekst">
+                <p>Historic walk is an event of Haarlem Festival where you can walk a tour. You will visit 9 famous spots of Haarlem during the tour. The walk is in english, Dutch and Chinese.            </p>
+                <button class="btn-default" onclick="location.href='@Url.Action("Index", "Historic")'; return false;">Event info</button>
+            </aside>
+        </aside>
+    </section>
+    <aside class="rechts">
+        <h2>Event types</h2>
+        <button class="btn-sidebar" id="food">Food</button>
+        <button class="btn-sidebar" id="historic">Historic</button>
+        <button class="btn-sidebar" id="dance">Dance</button>
+        <button class="btn-sidebar" id="jazz">Jazz</button>
+    </aside>
+</div>

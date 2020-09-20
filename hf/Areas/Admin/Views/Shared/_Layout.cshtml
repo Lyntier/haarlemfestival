@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    @Scripts.Render("~/Scripts/jquery-3.3.1.js")
+    
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/timetablejs.css")" />
+    @Scripts.Render("~/Scripts/timetable.js")
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.js"></script>
+
+
+    <link href="@Url.Content("~/Content/Admin/Site.css")" rel="stylesheet" />
+
+
+</head>
+<body>
+
+<header class="page-header">
+    <h1>@ViewBag.Title - Haarlem Festival Administration</h1>
+</header>
+
+<div id="page-wrapper" class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3">
+            <nav id="nav-main" class="navbar navbar-inverse" role="navigation">
+                <ul class="nav nav-stacked">
+                    <li role="presentation" id="nav-home"><a href="@Url.Action("Index", "ControlPanel")">Home</a></li>
+                    <li role="presentation" id="nav-insights"><a href="@Url.Action("Index", "Insights")">View sales statistics</a></li>
+                    <li role="presentation" id="nav-edit-pages"><a href="@Url.Action("Index", "Pages")">Change the website</a></li>
+                    <li role="presentation" id="nav-edit-events"><a href="@Url.Action("Index", "Event")">Edit events</a></li>
+                    <li role="presentation" id="nav-logout"><a href="@Url.Action("Logoff", "Home", new {area = "Admin"})">Log out</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-xs-9">
+            <main>
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

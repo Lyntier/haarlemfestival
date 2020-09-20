@@ -1,0 +1,48 @@
+﻿@model IEnumerable<hf.Models.Ticket>
+
+
+<section class="cart-container">
+    <h2>My Cart</h2>
+    @if (Model != null)
+    {
+        <table class="cart-table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Event.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalPrice)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Event.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPrice)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { eventId = item.Event.Id, totalPrice = item.TotalPrice }, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
+        @Html.ActionLink("Checkout", "Index", "Order")
+    } else
+    {
+        <p>You have no items in your cart at this moment.</p>
+    }
+ 
+</section>
+

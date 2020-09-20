@@ -1,0 +1,15 @@
+﻿.timetable .time-entry {
+    background-color: #006600;
+    border-color:dodgerblue;
+}
+.timetable .time-entry:hover {
+        background-color: dodgerblue;
+        border-radius: 0;
+    }
+.timetable > .time-label {
+    font-family: sans-serif;
+}
+
+.timetable aside li {
+    background-color: lightgreen;
+}

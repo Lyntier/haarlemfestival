@@ -1,0 +1,92 @@
+﻿@model hf.Models.PageInfo
+@{
+    ViewBag.Title = "Dance";
+}
+<script src="@Url.Content("~/Content/dist/scripts/timetable.js")" type="text/javascript"></script>
+<link rel="stylesheet" href="@Url.Content("~/Content/dist/styles/timetablejs.css")" />
+<link rel="stylesheet" href="@Url.Content("~/Content/Dance/timetable-dance.css")" />
+<link rel="stylesheet" href="@Url.Content("~/Content/Site.css")" />
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+
+
+<div class="dance-container">
+    <article class="links-dance">
+        <h2> Dance </h2>
+        @Model.Description1;
+    </article>
+    <article class="midden-dance">
+        <h2>Overview</h2>
+        <div class="timetable"></div>
+        <section class="artist-info">
+            <section class="dance-band-title">
+                <h2 id="artist-title">artist titel</h2>
+            </section>
+            <br>
+            <section class="dance-band-foto">
+                <img src="" id="artist-foto" width="400" />
+            </section>
+            <section class="artist-band-info"></section>
+            <p id="dance-band-info">.</p>
+            <br />
+            <section class="dance-artist-order">
+                <section class="artist-order-title">
+                    <h3>Ticket</h3>
+                </section>
+                <section class="artist-order-price">
+                    <label>Price: </label>
+                    <label id="ticketprice">60</label>
+                </section>
+                <section class="artist-order-amount">
+                    <label>Amount of tickets</label> <br />
+                    <select id="amount">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </section>
+                <section class="artist-order-totalprice">
+                    <label>Total price: </label>
+                    <label id="dancetotalprice">0</label>
+                </section>
+                <section class="artist-order-btn">
+                    <button class="dance-btn-order">Add to My Programme</button>
+                </section>
+
+
+            </section>
+
+        </section>
+    </article>
+
+    <article class="rechts-dance">
+        <aside class="btn-days">
+            @for (int i = 0; i < int.Parse(Model.Description2); i++)
+            {
+                string day = "day" + (i+1);
+                <button class="btn-date-dance" id=@day> i </button>
+            }
+            @for (int i = 0; i < int.Parse(Model.Description2); i++)
+            {
+                string day = "Allday" + (i+1);
+                <button class="btn-date-dance" id=@day> i </button>
+            }
+
+            <button class="btn-date-dance" id="Allday">All-Access Day Pass</button>
+        </aside>
+        <aside class="price">
+            <h2>Price</h2>
+            <p><strong>Regular:</strong> see timetable for specific ticket price</p>
+            <p><strong>All-access pass Friday:</strong> &euro;150,00</p>
+            <p><strong>All-access pass Saturday & Sunday:</strong> &euro;125,00</p>
+            <p><strong>All-access pass 3 days:</strong> &euro;250,00</p>
+        </aside>
+    </article>
+
+</div>
+
+<script src="@Url.Content("~/Scripts/Dance/dance.js")" type="text/javascript"></script>

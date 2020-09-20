@@ -1,0 +1,225 @@
+﻿@model hf.Models.Event
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Edit events</h2>
+
+<nav id="nav-tab">
+    <ul>
+        <li id="tab-event"><a id="tab-link-events" href="#">All events</a></li>
+        <li id="tab-jazz"><a id="tab-link-jazz" href="#">Jazz</a></li>
+        <li id="tab-dance"><a id="tab-link-dance" href="#">Dance</a></li>
+        <li id="tab-walk"><a id="tab-link-walk" href="#">Walk</a></li>
+        <li id="tab-food"><a id="tab-link-food" href="#">Food</a></li>
+    </ul>
+</nav>
+
+
+<section id="event-partial"></section>
+
+<div id="timetable-wrapper">
+    <h3>Thursday, July 26th</h3>
+    <section id="timetable-day1" class="timetable">
+        <img src="@Url.Content("~/Content/Admin/loading.gif")" width="80" height="80" alt="Loading" />
+    </section>
+    <h3>Friday, July 27th</h3>
+    <section id="timetable-day2" class="timetable">
+        <img src="@Url.Content("~/Content/Admin/loading.gif")" width="80" height="80" alt="Loading" />
+    </section>
+    <h3>Saturday, July 28th</h3>
+    <section id="timetable-day3" class="timetable">
+        <img src="@Url.Content("~/Content/Admin/loading.gif")" width="80" height="80" alt="Loading" />
+    </section>
+    <h3>Sunday, July 29th</h3>
+    <section id="timetable-day4" class="timetable">
+        <img src="@Url.Content("~/Content/Admin/loading.gif")" width="80" height="80" alt="Loading" />
+    </section>
+</div>
+
+<script>
+
+
+
+
+
+
+    function renderTimetable(timetable, day) {
+
+        timetable.setScope(9, 2);
+
+        var renderer = new Timetable.Renderer(timetable);
+        renderer.draw('#timetable-day' + (day + 1).toString());
+
+    }
+
+
+    function updateTimetables(eventCategory) {
+        $.ajax({
+            url: "ControlPanel/GetEvents",
+            type: "post",
+            dataType: "json",
+            data: {
+                eventType: eventCategory
+            },
+            success: function (data) {
+                console.log("Putting data in arrays..");
+                let dataArray =
+                {
+                    jazzEvents: [],
+                    danceEvents: [],
+                    walkEvents: [],
+                    foodEvents: [],
+                    miscEvents: [] // Just in case an additional category is added later, maybe one that covers all events
+                }
+
+                let timetables = [new Timetable(), new Timetable(), new Timetable(), new Timetable()]; // 4 timetables, 1 for each day
+
+                for (let i = 0; i < data.length; i++) {
+                    const currentEvent = data[i];
+                    if (currentEvent.Name == "All-Access Pass") continue;
+
+                    let eventStartDate = new Date(parseInt(currentEvent.Starttime.substr(6), 10));  // Calcuates the day the
+                    let eventEndDate = new Date(parseInt(currentEvent.Endtime.substr(6), 10));      // event takes place on.
+
+                    currentEvent.Starttime = eventStartDate;    // Then, loads that date
+                    currentEvent.Endtime = eventEndDate;        // back in the object.
+
+
+                    let location;
+
+                    if (currentEvent.Category == "jazz") {
+                        dataArray.jazzEvents.push(currentEvent);
+                        if (currentEvent.Hall)
+                            location = currentEvent.Location.split(",")[0] + " " + currentEvent.Hall;
+                        else location = currentEvent.Location.split(",")[0];
+                    }
+                    else if (currentEvent.Category == "dance") {
+                        dataArray.danceEvents.push(currentEvent);
+                        location = currentEvent.Location;
+                    }
+                    else if (currentEvent.Category == "Historic") {
+                        dataArray.walkEvents.push(currentEvent);
+                        location = currentEvent.Location + " " + currentEvent.Language;
+                    }
+                    else if (currentEvent.Category == "Food") {
+                        dataArray.foodEvents.push(currentEvent);
+                        console.log(currentEvent);
+                        location = currentEvent.Name;
+                    } else {
+                        dataArray.miscEvents.push(currentEvent);
+                        location = currentEvent.Location;
+                    }
+
+
+                    // All unique locations are loaded into an array to properly categorize them in the timetables.
+                    let currentDay = currentEvent.Starttime.getDate() - 26;
+                    if (!timetables[currentDay].locations.includes(location))
+                        timetables[currentDay].addLocations([location]);
+
+
+                    console.log(currentEvent.Category);
+
+
+                        console.log(currentEvent.Category + "-event");
+                        console.log("event-" + currentEvent.Id);
+
+                        let eventUrl = "@Url.Action("SeparateEvent", "ControlPanel", new { id = "eventId" })";
+                        eventUrl = eventUrl.replace("eventId", currentEvent.Id);
+                        console.log(currentEvent.Id);
+
+                        timetables[currentEvent.Starttime.getDate() - 26]
+                            .addEvent(currentEvent.Name, location, currentEvent.Starttime, currentEvent.Endtime,
+                            {
+                                url: eventUrl,
+                                class: currentEvent.Category + "-event"
+                            });
+
+                }
+
+                for (let i = 0; i < timetables.length; i++) {
+                    renderTimetable(timetables[i], i);
+                }
+
+            }
+        });
+    }
+
+
+    function clickEventFilter() {
+        $("#timetable-wrapper").html('\
+            <h3>Thursday, July 26th</h3>\
+            <section id="timetable-day1" class="timetable">\
+                <img src="@Url.Content("~/Content/Admin/loading.gif")" alt="Loading" />\
+            </section>\
+            <h3>Friday, July 27th</h3>\
+            <section id="timetable-day2" class="timetable">\
+                <img src="@Url.Content("~/Content/Admin/loading.gif")" alt="Loading" />\
+            </section>\
+            <h3>Saturday, July 28th</h3>\
+            <section id="timetable-day3" class="timetable">\
+                <img src="@Url.Content("~/Content/Admin/loading.gif")" alt="Loading" />\
+            </section>\
+            <h3>Sunday, July 29th</h3>\
+            <section id="timetable-day4" class="timetable">\
+                <img src="@Url.Content("~/Content/Admin/loading.gif")" alt="Loading" />\
+            </section>\
+            ');
+    }
+
+    $('#tab-link-events').click(function () {
+        console.log("Triggered refresh of loading gifs");
+        clickEventFilter();
+
+        console.log("Triggered refresh of loading partial");
+        let url = '@Url.Action("EventTimetable", "ControlPanel")';
+        $('#event-partial').load(url);
+
+        updateTimetables();
+    });
+
+    $('#tab-link-jazz').click(function () {
+        clickEventFilter();
+        let url = '@Url.Action("JazzTimetable", "ControlPanel")';
+        $('#event-partial').load(url);
+
+        updateTimetables("jazz");
+    });
+
+    $('#tab-link-dance').click(function () {
+        clickEventFilter();
+        let url = '@Url.Action("DanceTimetable", "ControlPanel")';
+        $('#event-partial').load(url);
+
+        updateTimetables("dance");
+    });
+
+    $('#tab-link-walk').click(function () {
+        clickEventFilter();
+        let url = '@Url.Action("WalkTimetable", "ControlPanel")';
+        $('#event-partial').load(url);
+
+        updateTimetables("walk");
+    });
+
+    $('#tab-link-food').click(function () {
+        clickEventFilter();
+        let url = '@Url.Action("FoodTimetable", "ControlPanel")';
+        $('#event-partial').load(url);
+
+        updateTimetables("food");
+    });
+
+    $(document).ready(function() {
+        $('#tab-link-events').trigger('click');
+    });
+
+
+</script>
+
+
+
+
+
+
+

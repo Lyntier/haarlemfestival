@@ -1,0 +1,63 @@
+﻿@*@model hf.ViewModels.FoodViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="@Url.Content("~/Content/Food/Food.css")" />
+
+<h1>Haarlem Food</h1>
+
+<p class="InformationPage">
+    @Model.PageInfo.Description1
+</p>
+
+<ul style="list-style-type:none" class="CuisinesLeft">
+    <li class="cuisine"><h2>Choose cuisine:</h2></li>
+    <li><button type="button" onclick="ShowAllRestaurants()" class="CuisineButton"><h3>Show all</h3></button></li>
+    @foreach (var item in Model.CuisineList)
+    {
+        <li><button class="CuisineButton"><h3>@item.Type</h3></button></li>
+    }
+</ul>
+
+<ul style="list-style-type:none" class="RestaurantsRight" id="Restaurants">
+    @foreach (var item in Model.RestaurantList)
+    {
+    <li><button onclick="ShowRestaurantDetails()" class="RestaurantButton"><h3>@item.Name</h3></button></li>     
+    }
+</ul>
+
+<div id="RestaurantDetails">
+        <article class="ImageAndTitle">
+            <img src="@Model.GetDetails.PictureUrl" />
+            <h2>@Model.GetDetails.Name</h2>
+        </article>
+        <p class="DescriptionRestaurant">
+            @Model.GetDetails.Description
+        </p>
+        <h6>Grote Markt 13, 2011RC Haarlem</h6>
+        <button onclick="ReservationButton()" id="ReservationButton">Make a reservation</button>
+</div>
+
+<div id="OrderTickets">
+    <h2>Make a reservation</h2>
+    <button class="dropdown"></button>
+</div>
+
+@*<script src="~/Scripts/Food/Food.js"></script>*@
+
+<script>
+
+    document.getElementById('Restaurants').style.visibility = 'hidden';
+    document.getElementById('RestaurantDetails').style.visibility = 'hidden';
+    document.getElementById('OrderTickets').style.visibility = 'hidden';
+
+    function ShowAllRestaurants() {
+        var x = document.getElementById('Restaurants');
+        if (x.style.visibility === 'hidden') {
+            x.style.visibility = 'visible';
+        } else (x.style.visibility === 'visible')
+    }
+
+
+</script>

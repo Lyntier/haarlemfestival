@@ -1,0 +1,132 @@
+﻿body {
+    background-image: url('Food_background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 38px;
+}
+
+h2 {
+    color: white;
+    font-size: 20px;
+}
+
+h6 {
+    color: white;
+    font-size: 15px;
+}
+
+.InformationPage {
+    margin-left: 30%;
+    margin-right: 25%;
+    color: white;
+}
+
+.DescriptionRestaurant {
+    color: white;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.CuisinesLeft {
+    width: 15%;
+    float: left;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    margin-right: 2%;
+}
+
+.RestaurantsRight {
+    float: left;
+    width: 20%;
+    margin-top: 4.2%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+}
+
+#RestaurantDetails {
+    float: right;
+    width: 30%;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    margin-top: 4.2%;
+    margin-right: 1%;
+}
+
+#OrderTickets {
+    float: right;
+    width: 30%;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    margin-top: 4.2%;
+    margin-right: 1%;
+}
+
+.ImageAndTitle {
+    margin-left: 25%;
+}
+
+.CuisineButton {
+    text-align: left;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    width: 80%;
+    background-color: #F2F2F2;
+}
+
+#CuisineButton {
+    text-align: left;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    width: 80%;
+    background-color: #F2F2F2;
+}
+
+.RestaurantButton {
+    text-align: left;
+    border-radius: 30px;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    margin-left: 4%;
+    width: 80%;
+    background-color: #F2F2F2;
+}
+
+#RestaurantButton {
+    text-align: left;
+    border-radius: 30px;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    margin-left: 4%;
+    width: 80%;
+    background-color: #F2F2F2;
+}
+
+#ReservationButton {
+    background-color: #FA8F1B;
+    color: white;
+    margin-left: 35%;
+    width: 35%;
+    height: 8%;
+    border-radius: 30px;
+    font-size: 18px;
+}
+
+.CuisineButton:hover, .RestaurantButton:hover {
+    background-color: #FA8F1B;
+    color: white;
+}
+

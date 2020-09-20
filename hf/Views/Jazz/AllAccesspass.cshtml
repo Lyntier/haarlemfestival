@@ -1,0 +1,33 @@
+﻿@model IEnumerable<hf.Models.Jazz>
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+
+<div class="cart-container">
+    <h2>Jazz All Access pass</h2>
+    <h3>Choose a pass</h3>
+    @*@foreach (hf.Models.Jazz jazz in Model)
+        {
+
+            @Html.ActionLink("Create A New Invoice", "FillSession", "Ticket", new { ticketevent= jazz, eventamount= 1}, new { @class = "btn-jazzaap" })
+            <button class="btn-jazzaap">
+                <strong>@jazz.Name</strong>
+                <p>Start time: @jazz.Starttime.ToString("MM-dd-yyyy HH:mm")</p>
+                <p>End time: @jazz.Endtime.ToString("MM-dd-yyyy HH:mm")</p>
+                <strong>Price: &euro;@jazz.Price</strong>
+            </button>
+        }*@
+
+    <form id="form-aap">
+        <label>Amount of tickets</label>
+        <input type="number" name="eventmount" /> <hr />
+        @foreach (hf.Models.Jazz jazz in Model)
+        {
+            <label>Start: @jazz.Starttime.ToString("MM-dd-yyyy HH:mm"), End @jazz.Endtime.ToString("MM-dd-yyyy HH:mm"), <strong>Price: &euro; @jazz.Price</strong></label>
+            @Html.RadioButton("ticketevent", jazz.Id)
+            <br />
+        }
+        <input type="submit" class="btn-date-jazz" value="Add to my programme" id="jazz-aap" />
+    </form>
+
+
+</div>
+<script src="@Url.Content("~/Scripts/jazz/jazz-AllaccessPass.js")" type="text/javascript"></script>

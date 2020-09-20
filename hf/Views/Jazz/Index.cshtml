@@ -1,0 +1,84 @@
+﻿@model hf.Models.JazzVM
+
+@{
+    ViewBag.Title = "Jazz";
+}
+<script src="@Url.Content("~/Content/dist/scripts/timetable.js")" type="text/javascript"></script>
+<link rel="stylesheet" href="@Url.Content("~/Content/dist/styles/timetablejs.css")" />
+<link rel="stylesheet" href="@Url.Content("~/Content/jazz/timetable-jazz.css")" />
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="~/Scripts/Moment.js"></script>
+
+<div class="jazz-container">
+    <article class="links-jazz">
+        <h1>Jazz</h1>
+        <p>@Model.pageInfo.Description1</p>
+        <h2>What is Jazz?</h2>
+        <p>@Model.pageInfo.Description2</p>
+    </article>
+    <article class="midden-jazz">
+        <h2 id="jazzdag">Thursday</h2>
+        <div class="timetable"></div>
+        <section class="band-info">
+            <section class="jazz-band-title">
+                <h2 id="band-title">band titel</h2>
+            </section>
+            <section class="jazz-band-foto">
+                <img src="" id="band-foto" width="400" />
+            </section>
+            <section class="jazz-band-info">
+
+            </section>
+            <section class="jazz-band-video">
+                <iframe src="" width="400" height="400" frameborder="0" allowfullscreen id="jazz-band-video"></iframe>
+            </section>
+            <section class="jazz-band-order">
+                <section class="band-order-title">
+                    <h3 id="ticket-title">Tickets</h3>
+                </section>
+                <section class="band-order-price">
+                    <label>Price: </label>
+                    <label id="ticketprice">12</label>
+                </section>
+                <section class="band-order-amount">
+                    <label>Amount of tickets</label> <br />
+                    <select id="amount">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </section>
+                <section class="band-order-totalprice">
+                    <label>Total price: </label>
+                    <label id="jazztotalprice">0</label>
+                </section>
+                <section class="band-order-btn">
+                    <button class="jazz-btn-order">Add to My Programme</button>
+                </section>
+                
+
+            </section>
+            
+        </section>
+    </article>
+
+    <article class="rechts-jazz">
+        <aside class="btn-days">
+            @foreach(DateTime date in Model.DateTimes)
+            {
+                <button class="btn-date-jazz" id="@date.ToString("dddd")">@date.ToString("dddd dd MMMM")</button> <br />
+            }
+
+            <button class="btn-date-jazz">All-access pass</button>
+        </aside>
+        <aside class="price">
+            <h2>Price</h2>
+            <p><strong>Regular:</strong> see timetable</p>
+            <p><strong>All-access pass 1 day:</strong> &euro;35,00</p>
+            <p><strong>All-access pass 3 days:</strong> &euro;80,00</p>
+            @Html.ActionLink("All-Access Pass", "AllAccesspass", "Jazz")
+        </aside>
+    </article>
+</div>
+<script src="@Url.Content("~/Scripts/jazz/jazz.js")" type="text/javascript"></script>

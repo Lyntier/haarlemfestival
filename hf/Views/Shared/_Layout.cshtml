@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Haarlem Festival</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li>@Html.ActionLink("Haarlem Festival", "Index", "Home")</li>
+            <li>@Html.ActionLink("Jazz", "Index", "Jazz")</li>
+            <li>@Html.ActionLink("Food", "Index", "Food")</li>
+            <li>@Html.ActionLink("Historic", "Index", "Historic")</li>
+            <li>@Html.ActionLink("Dance", "Index", "Dance")</li>
+            <li>@Html.ActionLink(" ", "Index", "Ticket", null, new { @class = "shoppingcart"})</li>
+        </ul>
+    </nav>
+
+    
+        @RenderBody()
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

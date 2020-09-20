@@ -1,0 +1,61 @@
+﻿@model hf.Models.Login
+@{
+    ViewBag.Title = "Login - Haarlem Festival";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="@Url.Content("~/Content/Admin/Login.css")" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        @using (Html.BeginForm("Login", "Home", new { area = "Admin" }, FormMethod.Post))
+        {
+            <h2 class="form-header">Sign in - HF Administration</h2>
+            <div class="row">
+                <div class="col-md-6 col-form-label">
+                    @Html.LabelFor(m => m.Username)
+                </div>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(m => m.Username)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-form-label">
+                    @Html.LabelFor(m => m.Password)
+                </div>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(m => m.Password)
+                </div>
+            </div>
+            <div class="row">
+                @{
+                    ModelState state;
+                    if (ViewData.ModelState.TryGetValue("login-error", out state))
+                    {
+                        <p class="bg-danger">Could not find the given login details. Please try again.</p>
+                    }
+                }
+            </div>
+            <div class="row row-button">
+                <div class="col-md-8">
+                    Forgot your password? <a href='mailto:admin@haarlemfestival.local'>Mail us</a>.
+                </div>
+                <div id="button-container" class="col-md-4">
+                    <input type="submit" name="login-button" value="Login" />
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
+

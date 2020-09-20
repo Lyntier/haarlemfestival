@@ -1,0 +1,547 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-size: 14pt;
+    line-height: 1.6;
+    font-family: sans-serif;
+}
+
+.shoppingcart {
+    background: url('shopping-cart.png') no-repeat;
+    margin-left: 77em;
+    background-size: cover;
+    margin-top: 0;
+    margin-bottom: 0;
+    float: right;
+}
+
+h1 {
+    font-size: 25pt;
+}
+
+h2 {
+    font-size: 20pt;
+}
+
+nav {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+    nav > ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 1);
+    }
+
+        nav > ul > li {
+            float: left;
+        }
+
+            nav > ul > li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+li a:hover {
+    background-color: #111;
+    border-radius: 1em;
+}
+
+.container {
+    display: flex;
+    background-image: url('bg.jpg');
+    padding-top: 3em;
+    padding-bottom: 6em;
+    background-size: cover;
+    height: 100%;
+}
+
+.links {
+    flex: 1;
+    margin-right: 500px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 0 1em 1em 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.l-title {
+    flex: 1;
+}
+
+.l-info {
+    flex: 1;
+}
+
+.l-social {
+    flex: 1;
+}
+
+
+.midden {
+    visibility: hidden;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 1em 1em 1em 1em;
+    padding: 1em;
+    margin: 0 1em 0 10em;
+    color: white;
+}
+
+.btn-default {
+    margin: 0 0 1em 0;
+    padding: 0;
+    background-color: rgb(38, 159, 214);
+    color: white;
+    font-size: 16pt;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 13px;
+    text-align: center;
+    border: none;
+    width: 100%;
+    border-radius: 1em;
+}
+
+.mid-img {
+    flex: 2;
+}
+
+.mid-title {
+    flex: 1;
+}
+
+.mid-tekst {
+    flex: 2;
+}
+
+.food, .jazz, .dance, .historic {
+    display: none;
+}
+
+.rechts {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 1em 0 0 1em;
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0 0 1em;
+    justify-content: space-between;
+    margin-left: 150px;
+}
+
+.btn-sidebar {
+    margin: 0 0 1em 0;
+    padding: 0;
+    background-color: white;
+    font-size: 16pt;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 13px;
+    text-align: center;
+    border: none;
+    border-radius: 1em 0 0 1em;
+    width: 100%;
+    height: 4em;
+}
+
+    .btn-sidebar:hover {
+        background-color: rgb(38, 159, 214);
+        color: white;
+    }
+
+/*jazz styling*/
+.jazz-container {
+    display: flex;
+    background-image: url('jazz-bg.png');
+    padding-top: 3em;
+    padding-bottom: 6em;
+    background-size: cover;
+    height: 100%;
+}
+
+.links-jazz {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 12px;
+    border-radius: 0 1em 1em 0;
+    color: #fff;
+    opacity: 0;
+}
+
+.midden-jazz {
+    flex: 2;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1em;
+    border-radius: 1em 1em 1em 1em;
+    margin-right: 3em;
+    margin-left: 3em;
+    opacity: 0;
+}
+
+.band-info {
+    opacity: 0;
+    display: grid;
+    grid-template-areas: "title title" "foto video" "info order";
+    grid-gap: 3px;
+    color: white;
+}
+
+.jazz-band-title {
+    grid-area: title;
+    background-color: deepskyblue;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.jazz-band-info {
+    grid-area: info;
+}
+
+.jazz-band-foto {
+    grid-area: foto;
+    margin: auto;
+}
+
+.jazz-band-video {
+    margin: auto;
+}
+
+.jazz-band-order {
+    display: grid;
+    grid-template-areas: "title title" "price amount" "totalprice totalprice" "btn btn";
+    padding: 1em;
+}
+
+.band-order-title {
+    grid-area: title;
+    background-color: purple;
+    padding: 0;
+    font-variant: small-caps;
+}
+
+    .band-order-title > h3 {
+        margin: 0;
+        text-align: center;
+    }
+
+.band-order-price {
+    grid-area: price;
+}
+
+.band-order-amount {
+    grid-area: amount;
+}
+
+.band-order-totalprice {
+    grid-area: totalprice;
+}
+
+.band-order-btn {
+    grid-area: btn;
+}
+
+.jazz-btn-order {
+    width: 100%;
+    background-color: deepskyblue;
+    padding: 1em;
+    font-size: 14pt;
+    border: 0;
+    color: white;
+}
+
+.midden-jazz > h2 {
+    color: #fff;
+}
+
+.rechts-jazz {
+    margin-left: 1em;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    opacity: 0;
+}
+
+.timetable-jazz {
+    border: solid 1px red;
+    flex: 1;
+}
+
+.btn-days {
+    flex: 1;
+}
+
+.price {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1em;
+    border-radius: 1em 0 0 1em;
+}
+
+.allebands {
+    flex-wrap: wrap;
+}
+
+.btn-band {
+    background-color: purple;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.band {
+    flex: 2;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-areas: "title title" "foto video" "tekst ticket";
+}
+
+.band-title {
+    grid-area: title;
+    background-color: rgb(38, 159, 214);
+    max-height: 5em;
+    text-align: center;
+}
+
+.band-img {
+    grid-area: foto;
+}
+
+.band-video {
+    grid-area: video;
+}
+
+.band-text {
+    grid-area: tekst;
+}
+
+.band-ticket {
+    grid-area: ticket;
+}
+
+select {
+    width: 5em;
+    font-size: 14pt;
+}
+
+.btn-date-jazz {
+    background-color: purple;
+    color: white;
+    font-size: 16pt;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 13px;
+    text-align: center;
+    border: none;
+    border-radius: 22px 0 0 22px;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.btn-jazzaap {
+    padding: 1em;
+    margin: 1em;
+    background-color: purple;
+    border: 0;
+    border-radius: 22px;
+    color: #fff;
+    width: 100%;
+}
+
+    .btn-jazzaap:hover {
+        background-color: mediumpurple;
+    }
+
+
+/*Dance styling*/
+.dance-container {
+    display: flex;
+    background-image: url('Dance-bg.jpeg');
+    padding-top: 3em;
+    padding-bottom: 6em;
+    background-size: cover;
+    height: 100%;
+}
+
+.dance-btn-order {
+    width: 100%;
+    background-color: forestgreen;
+    padding: 1em;
+    font-size: 14pt;
+    border: 0;
+    color: white;
+}
+
+    .dance-btn-order:hover {
+        font-weight: bold;
+        background-color: green;
+    }
+
+    .dance-btn-order:active {
+        transform: translateY(4px);
+    }
+
+    .dance-btn-order:focus {
+        background-color: blue;
+    }
+
+.links-dance {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 12px;
+    border-radius: 0 1em 1em 0;
+    color: #fff;
+}
+
+.midden-dance {
+    flex: 2;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1em;
+    border-radius: 1em 1em 1em 1em;
+    margin-right: 3em;
+    margin-left: 3em;
+}
+
+.artist-info {
+    color: white;
+    padding-top: 25px;
+}
+
+.midden-dance > h2 {
+    color: #fff;
+}
+
+.rechts-dance {
+    margin-left: 1em;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.timetable-dance {
+    border: solid 1px red;
+    flex: 1;
+}
+
+.btn-days {
+    flex: 1;
+}
+
+.price {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1em;
+    border-radius: 1em 0 0 1em;
+}
+
+.allebands {
+    flex-wrap: wrap;
+}
+
+.btn-artist {
+    background-color: purple;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.artist {
+    flex: 2;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-areas: "title title" "foto video" "tekst ticket";
+}
+
+.artist-title {
+    grid-area: title;
+    background-color: rgb(38, 159, 214);
+    max-height: 5em;
+    text-align: center;
+}
+
+.artist-img {
+    grid-area: foto;
+}
+
+.artist-video {
+    grid-area: video;
+}
+
+.artist-text {
+    grid-area: tekst;
+}
+
+.artist-ticket {
+    grid-area: ticket;
+}
+
+select {
+    width: 5em;
+    font-size: 14pt;
+}
+
+.btn-date-dance {
+    background-color: #006600;
+    color: white;
+    font-size: 16pt;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 13px;
+    text-align: center;
+    border: none;
+    border-radius: 22px 0 0 22px;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.artist-info {
+    opacity: 0;
+    display: grid;
+    grid-template-areas: "title title" "foto video" "info order";
+    grid-gap: 3px;
+    color: white;
+}
+/*my cart styling*/
+.cart-container {
+    padding: 4em;
+}
+
+.cart-table {
+    width: 100%;
+}
+
+th {
+    height: 2em;
+    text-align: left;
+}
+
+td {
+    height: 2em;
+    border-bottom: 1px solid #000;
+}
